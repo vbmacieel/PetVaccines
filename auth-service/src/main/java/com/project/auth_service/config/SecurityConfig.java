@@ -13,18 +13,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    private static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
-            "/auth/login",
-            "/auth/register",
-    };
-
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(
-                        authorize -> authorize.requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).permitAll()
-                                .anyRequest().authenticated())
                 .build();
     }
 

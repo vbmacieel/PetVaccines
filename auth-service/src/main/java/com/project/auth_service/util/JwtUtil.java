@@ -18,7 +18,7 @@ import com.project.auth_service.entity.User;
 public class JwtUtil {
 
     private static final String ISSUER = "auth_service";
-    private static final String CLAIM = "claim";
+    private static final String CLAIM = "role";
 
     @Value("${jwt.secret}")
     private String secret;

@@ -18,6 +18,7 @@ import com.project.auth_service.entity.User;
 public class JwtUtil {
 
     private static final String ISSUER = "auth_service";
+    private static final String CLAIM = "claim";
 
     @Value("${jwt.secret}")
     private String secret;
@@ -33,6 +34,7 @@ public class JwtUtil {
                     .withIssuedAt(getCreationDate())
                     .withExpiresAt(getExpirationDate())
                     .withSubject(user.getEmail())
+                    .withClaim(CLAIM, user.getRole().name())
                     .sign(getSigninAlgorithm());
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro generating token!");

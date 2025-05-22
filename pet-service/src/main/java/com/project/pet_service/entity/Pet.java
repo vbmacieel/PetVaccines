@@ -1,6 +1,6 @@
 package com.project.pet_service.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,5 +21,11 @@ public class Pet {
     private Long id;
     private String name;
     private String race;
-    private Date birthDate;
+    private LocalDate birthDate;
+    
+    public Pet(String name, String race, LocalDate birthDate) {
+        this.name = name;
+        this.race = race;
+        this.birthDate = birthDate;
+    }
 }

@@ -17,4 +17,10 @@ public final class ClassMapper {
     public static Pet toEntity(RequestPetDTO dto) {
         return new Pet(dto.getName(), dto.getRace(), FormatDateUtil.format(dto.getBirthDate()));
     }
+
+    public static void updateEntityFromDto(RequestPetDTO dto, Pet entity) {
+        entity.setName(dto.getName());
+        entity.setRace(dto.getRace());
+        entity.setBirthDate(FormatDateUtil.format(dto.getBirthDate()));
+    }
 }
